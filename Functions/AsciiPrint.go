@@ -61,16 +61,3 @@ func AsciiPrint(s string, font string, align string) []string {
 
 	return charArray
 }
-
-// func AliJest(s string) []string {
-// 	width := 80
-
-// 	// Print text aligned to the left
-// 	fmt.Printf("%-s\n", width, s)
-
-// 	// Print text aligned to the center
-// 	fmt.Printf("%s\n", (width+len(text))/2, s)
-
-// 	// Print text aligned to the right
-// 	fmt.Printf("%*s\n", width, s)
-// }
