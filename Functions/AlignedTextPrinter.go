@@ -12,7 +12,6 @@ func AlignedTextPrinter(lines []string, align string, s string) string {
 		fmt.Println("ERROR: Terminal size and lines can't fit")
 		os.Exit(0)
 	}
-	// words := strings.Fields(s)
 	numWords := len(s) - 1
 	var spaceAdder string
 

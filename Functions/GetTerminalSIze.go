@@ -16,7 +16,6 @@ func GetTerminalSize() int {
 		fmt.Println("ERROR: Size of the terminal")
 		os.Exit(0)
 	}
-
 	size := strings.Split(strings.TrimSpace(string(out)), " ")
 	cols, eror := strconv.Atoi(size[1])
 	if eror != nil {

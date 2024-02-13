@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 )
-
 func R01() {
 	content, err := os.ReadFile("Fonts/Reboot.txt")
 	if err != nil {

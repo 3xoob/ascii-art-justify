@@ -22,11 +22,9 @@ func GetFont(fontToUse string) ([95][8]string, error) {
 		fmt.Print("ERROR: ")
 		return [95][8]string{}, err
 	}
-
 	scanner := bufio.NewScanner(file)
 	currentChar := -1 // Font starts with an empty line, so we need to start at -1
 	currentLine := 0
-
 	// Loop through each line in the font file.
 	for scanner.Scan() {
 		// If the line is empty, we are at the start of a new character.

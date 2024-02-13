@@ -20,6 +20,7 @@ func AsciiPrint(s string, font string, align string) []string {
 	// The function initializes an array called charArray using the
 	// initializeLines function, which determines the number of lines needed
 	// based on the validity of the characters in the input string s.
+	
 	charArray := initializeLines(s)
 	// Loop through each character in the string
 	for i := 0; i < len(s); i++ {
