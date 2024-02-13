@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	//calling all the function to work
 	if len(os.Args) == 1 {
 		fmt.Println("ERROR:")
 		fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]\nEX: go run . --align=right \"something\" standard")
@@ -46,3 +47,5 @@ func main() {
 	}
 
 }
+
+// s = strings.ReplaceAll(s, "\\t", "    ")
