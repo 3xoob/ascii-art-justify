@@ -24,9 +24,6 @@ func AlignedTextPrinter(lines []string, align string, s string) string {
 		spaceAdder = strings.Repeat(" ", (cols-len(s))/2)
 	case "justify":
 		spaceAdder = strings.Repeat(" ", (cols-len(s))/numWords)
-	default:
-		fmt.Errorf("ERROR: Invalid alignment option: %s", align)
-		os.Exit(0)
 	}
 
 	return spaceAdder

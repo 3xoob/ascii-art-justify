@@ -41,3 +41,5 @@ echo "test 19:"
 go run . --align=justify "a -> A b -> B c -> C" standard
 echo "test 20:"
 go run . --align=justify "1 Two 4" standard
+echo "test 21:"
+go run . --align=hello "1 Two 4" standard
