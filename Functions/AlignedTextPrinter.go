@@ -23,7 +23,7 @@ func AlignedTextPrinter(lines []string, align string, s string) string {
 	case "center":
 		spaceAdder = strings.Repeat(" ", (cols-len(s))/2)
 	case "justify":
-		spaceAdder = strings.Repeat(" ", (cols-len(s))/numWords)
+		spaceAdder = strings.Repeat(" ", ((cols-len(s))/numWords)*8)
 	}
 
 	return spaceAdder
