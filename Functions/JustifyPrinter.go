@@ -12,11 +12,14 @@ func JustifyPrinter(s string, font string, align string, numofsp int) {
 		fmt.Println("ERROR: ", err)
 		os.Exit(0)
 	}
+	if align == "justify" {
+		s = removeExtraSpaces(s)
+	}
 	charArray := initializeLines(s)
 	for i := 0; i < len(s); i++ {
 		if s[i] == 32 {
-			for linePos, _ := range GetCharacter(rune(s[i]), fontArray) {
-				charArray[linePos+len(charArray)-8] += strings.Repeat(" ", numofsp)
+			for i := 0; i <= 7; i++ {
+				charArray[i] += strings.Repeat(" ", numofsp)
 			}
 		} else if s[i] != '\n' && s[i] > 32 && s[i] <= 126 {
 			for linePos, line := range GetCharacter(rune(s[i]), fontArray) {

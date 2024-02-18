@@ -12,6 +12,9 @@ func AsciiPrint(s string, font string, align string) []string {
 		fmt.Println("ERROR: ", err)
 		return nil
 	}
+	if align == "justify" {
+		s = removeExtraSpaces(s)
+	}
 	charArray := initializeLines(s)
 	for i := 0; i < len(s); i++ {
 		if s[i] != '\n' && s[i] >= 32 && s[i] <= 126 {
@@ -30,7 +33,7 @@ func AsciiPrint(s string, font string, align string) []string {
 		}
 	}
 	for _, line := range charArray {
-		alignner := AlignedText(charArray, align, s)
+		alignner := AlignedText(line, align, s)
 		if align != "" {
 			if align == "justify" {
 				JustifyPrinter(s, font, align, alignner)
