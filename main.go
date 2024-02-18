@@ -28,11 +28,7 @@ func main() {
 			fmt.Println("ERROR: Invalid alignment option: ", align)
 			os.Exit(0)
 		}
-		if align == "justify" {
-			Justify.JustifyPrinter(strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n"), os.Args[3], align)
-		} else {
-			Justify.AsciiPrint(strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n"), os.Args[3], align)
-		}
+		Justify.AsciiPrint(strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n"), os.Args[3], align)
 	} else if len(os.Args[1:]) == 2 {
 		if strings.HasPrefix(os.Args[1], "--align=") {
 			align := strings.TrimPrefix(os.Args[1], "--align=")
@@ -41,11 +37,7 @@ func main() {
 				fmt.Println("ERROR: Invalid alignment option: ", align)
 				os.Exit(0)
 			}
-			if align == "justify" {
-				Justify.JustifyPrinter(strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n"), "standard", align)
-			} else {
-				Justify.AsciiPrint(strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n"), "standard", align)
-			}
+			Justify.AsciiPrint(strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n"), "standard", align)
 		} else if os.Args[2] == "standard" || os.Args[2] == "shadow" || os.Args[2] == "thinkertoy" {
 			Justify.AsciiPrint(strings.ReplaceAll(strings.ReplaceAll(os.Args[1], "\\t", "    "), `\n`, "\n"), os.Args[2], "")
 		} else {
@@ -65,5 +57,3 @@ func main() {
 		os.Exit(0)
 	}
 }
-
-// note for future s = strings.ReplaceAll(s, "\\t", "    ")
