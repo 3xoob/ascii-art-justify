@@ -6,43 +6,21 @@ import (
 	"os"
 )
 
-// 95 is the amount of characters in the font and 8 is the amount of lines in the font.
-
-func GetFont(fontToUse string) ([95][8]string, error) {
-	var fontArray = [95][8]string{}
-	AsciiFonts := []string{"standard", "shadow", "thinkertoy"}
-	for _, font := range AsciiFonts {
-		if fontToUse == font {
-			fontToUse = "Fonts/" + font + ".txt"
-			break
+func GetAscii(filename string, num int) string {
+	file, e := os.Open(filename)
+	if e != nil {
+		fmt.Println(e.Error())
+		os.Exit(0)
+	}
+	defer file.Close()
+	content := bufio.NewScanner(file)
+	lineNum := 0
+	line := ""
+	for content.Scan() {
+		if lineNum == num {
+			line = content.Text()
 		}
+		lineNum++
 	}
-	file, err := os.Open(fontToUse)
-	if err != nil {
-		fmt.Print("ERROR: ")
-		return [95][8]string{}, err
-	}
-	scanner := bufio.NewScanner(file)
-	currentChar := -1 // Font starts with an empty line, so we need to start at -1
-	currentLine := 0
-	// Loop through each line in the font file.
-	for scanner.Scan() {
-		// If the line is empty, we are at the start of a new character.
-		if scanner.Text() == "" {
-			currentChar++
-			currentLine = 0
-		} else {
-			// Map the line to the current character in the font array.
-			fontArray[currentChar][currentLine] = scanner.Text()
-			currentLine++
-		}
-	}
-	eror := scanner.Err()
-	if eror != nil {
-		file.Close()
-		return [95][8]string{}, err
-	}
-
-	err = file.Close()
-	return fontArray, err
+	return line
 }
