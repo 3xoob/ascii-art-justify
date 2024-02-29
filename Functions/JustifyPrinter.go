@@ -58,14 +58,12 @@ func JustifyPrinter(words string, filename string) {
 		container = ""
 	}
 	textLen := 0
-	
 	for _, arrOfStr := range ar {
 		// حطيتها عشان لو الأري فاضي ماتحسب عند الانديكس 0 وتطلع بانيك
 		if len(arrOfStr) != 0 {
 			textLen += len(arrOfStr[0])
 		} 
 	}
-
 	numSpaces := (terminalWidth - textLen) / (len(sws) - 1)
 
 		//			for i := 0; i < 8; i++ {  انت كنت حاط 
