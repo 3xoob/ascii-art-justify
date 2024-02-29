@@ -35,11 +35,6 @@ func JustifyPrinter(words string, filename string) {
 	}
 
 	sws := RemoveExtraSpaces(words)
-	// لما تكتب e   olllfhfhhdh\ndhdhxhdhdhdhhdhdhdhdhxhxbxbdbbxbdbxbxnzx مثلَا 
-	// يرجع ليك  array طوله 3 
-	// المفروض طوله 2 لأن في نيو لاين وحدة
-	// fmt.Print(len(sws))
-
 	ar := make([][]string, len(sws))
 	j := 0
 	container := ""
@@ -59,31 +54,23 @@ func JustifyPrinter(words string, filename string) {
 	}
 	textLen := 0
 	for _, arrOfStr := range ar {
-		// حطيتها عشان لو الأري فاضي ماتحسب عند الانديكس 0 وتطلع بانيك
 		if len(arrOfStr) != 0 {
 			textLen += len(arrOfStr[0])
-		} 
+		}
 	}
 	numSpaces := (terminalWidth - textLen) / (len(sws) - 1)
-
-		//			for i := 0; i < 8; i++ {  انت كنت حاط 
-		//فقمت وقلبتها عشان يطبع نيولاين بين السطور لأن ماكان يطبع range حاطها قبل الثانية مالت ال
-		
 	for k, v := range ar {
 		for i := 0; i < 8; i++ {
-		//  يعد نفس الخردة عشان لو السطر فاضي ماتدخله وتطلع بانيك  
-		if len(v) != 0 {
-			fmt.Print(v[i])
-			if k != len(ar)-1 {
-				fmt.Print(SpacePrinter(numSpaces))
-			}
-			// عشان النيولاين بين السطور ، اذا وصلت أخر سطر ماتطبع عقبه
-			if i != 7 {
-				fmt.Println()
-			}
+			if len(v) != 0 {
+				fmt.Print(v[i])
+				if k != len(ar)-1 {
+					fmt.Print(SpacePrinter(numSpaces))
+				}
+				if i != 7 {
+					fmt.Println()
+				}
 			}
 		}
-					// عشان النيولاين بين السطور ، اذا وصلت أخر جملة ماتطبع عقبها
 
 		if k != len(v)-1 {
 			fmt.Println()

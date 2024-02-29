@@ -13,3 +13,9 @@ if you didn't select any type of font it will print with the standard font.
 You could find our usernames (members of the team) by commanding "Ascii Art justify Team"
 Have fun and enjoy Auditing to our project.
 Good luck!
+
+
+
+go run . --align=justify "e llo\nrgerrfffffffffffffffffffffffffffffffffe" shadow
+go run . --align=right "e llo\n\nrgerfe" shadow
+go run . --align=justify "e llo\n\n\nrgerfe" shadow
