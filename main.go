@@ -31,11 +31,12 @@ func main() {
 			os.Exit(0)
 		}
 		filename = Justify.FontChecker(os.Args[3])
-		str := strings.ReplaceAll(os.Args[2], "\\t", "    ")
+		str := strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, " \n")
 		if align == "right" || align == "center" || align == "left" {
 			checkalign = true
 		}
 		if align == "justify" && len(Justify.RemoveExtraSpaces(str)) > 1 {
+			//Justify.AsciiPrint(str, "justify")
 			Justify.JustifyPrinter(str, filename)
 			os.Exit(0)
 		}
@@ -52,8 +53,9 @@ func main() {
 			if align == "right" || align == "center" || align == "left" {
 				checkalign = true
 			}
-			str := strings.ReplaceAll(os.Args[2], "\\t", "    ")
+			str := strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, " \n")
 			if align == "justify" && len(Justify.RemoveExtraSpaces(str)) > 1 {
+				//Justify.AsciiPrint(str, "justify")
 				Justify.JustifyPrinter(str, filename)
 				os.Exit(0)
 			}
@@ -61,7 +63,7 @@ func main() {
 			os.Exit(0)
 		} else if os.Args[2] == "standard" || os.Args[2] == "shadow" || os.Args[2] == "thinkertoy" {
 			filename = Justify.FontChecker(os.Args[2])
-			str := strings.ReplaceAll(os.Args[1], "\\t", "    ")
+			str := strings.ReplaceAll(strings.ReplaceAll(os.Args[1], "\\t", "    "), `\n`, "\n")
 			Justify.Printer(str, filename, checkalign, align)
 			os.Exit(0)
 		} else {
@@ -73,7 +75,7 @@ func main() {
 		}
 
 	} else if len(os.Args[1:]) == 1 {
-		str := strings.ReplaceAll(os.Args[1], "\\t", "    ")
+		str := strings.ReplaceAll(strings.ReplaceAll(os.Args[1], "\\t", "    "), `\n`, "\n")
 		Justify.Printer(str, filename, checkalign, align)
 		os.Exit(0)
 	} else {
