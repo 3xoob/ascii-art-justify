@@ -54,16 +54,22 @@ func JustifyPrinter(words string, filename string) {
 	}
 	textLen := 0
 	for _, arrOfStr := range ar {
-		textLen += len(arrOfStr[0])
+		if len(arrOfStr) != 0 {
+			textLen += len(arrOfStr[0])
+		} 
 	}
 	numSpaces := (terminalWidth - textLen) / (len(sws) - 1)
 
 	for i := 0; i < 8; i++ {
 		for k, v := range ar {
+			if len(v) == 0 && i == 0 {
+				fmt.Print("\n")
+			} else if len(v) != 0 {
 			fmt.Print(v[i])
 			if k != len(ar)-1 {
 				fmt.Print(SpacePrinter(numSpaces))
 			}
+		}
 		}
 		fmt.Println()
 	}
