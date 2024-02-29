@@ -7,9 +7,9 @@ import (
 )
 
 func GetAscii(filename string, num int) string {
-	file, e := os.Open(filename)
-	if e != nil {
-		fmt.Println(e.Error())
+	file, err := os.Open(filename)
+	if err != nil {
+		fmt.Println("ERROR: ", err)
 		os.Exit(0)
 	}
 	defer file.Close()

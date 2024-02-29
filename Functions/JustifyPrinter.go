@@ -15,7 +15,7 @@ func JustifyPrinter(words string, filename string) {
 		if number1 > 0 && words[number1-1:number1] == " " {
 			words = words[:number1-1]
 			if number1 == number2 {
-				fmt.Println("NOTICE: string cannot end with space for justify alignment, removing trailing spaces")
+				fmt.Println("ERROR: string cannot end with space for justify alignment, removing trailing spaces")
 			}
 			number1--
 		} else {
@@ -27,7 +27,7 @@ func JustifyPrinter(words string, filename string) {
 		if strings.HasPrefix(words, " ") {
 			words = words[1:]
 			if len(words) == number3-1 {
-				fmt.Println("NOTICE: string cannot start with space for justify alignment, adjusting text")
+				fmt.Println("ERROR: string cannot start with space for justify alignment, adjusting text")
 			}
 		} else {
 			checkPrefix = true
@@ -53,8 +53,8 @@ func JustifyPrinter(words string, filename string) {
 		container = ""
 	}
 	textLen := 0
-	for _, arOfStr := range ar {
-		textLen += len(arOfStr[0])
+	for _, arrOfStr := range ar {
+		textLen += len(arrOfStr[0])
 	}
 	numSpaces := (terminalWidth - textLen) / (len(sws) - 1)
 

@@ -10,7 +10,7 @@ import (
 
 func main() {
 	checkalign := false
-	filename := "standard.txt"
+	filename := "Fonts/standard.txt"
 	align := "left"
 	if len(os.Args) == 1 {
 		fmt.Println("ERROR:")
@@ -32,7 +32,7 @@ func main() {
 		}
 		filename = Justify.FontChecker(os.Args[3])
 		str := strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n")
-		if align == "right" || align == "center" {
+		if align == "right" || align == "center" || align == "left" {
 			checkalign = true
 		}
 		if align == "justify" && len(Justify.RemoveExtraSpaces(str)) > 1 {
@@ -49,7 +49,7 @@ func main() {
 				fmt.Println("ERROR: Invalid alignment option: ", align)
 				os.Exit(0)
 			}
-			if align == "right" || align == "center" {
+			if align == "right" || align == "center" || align == "left" {
 				checkalign = true
 			}
 			str := strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n")
@@ -61,7 +61,7 @@ func main() {
 			os.Exit(0)
 		} else if os.Args[2] == "standard" || os.Args[2] == "shadow" || os.Args[2] == "thinkertoy" {
 			filename = Justify.FontChecker(os.Args[2])
-			str := strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n")
+			str := strings.ReplaceAll(strings.ReplaceAll(os.Args[1], "\\t", "    "), `\n`, "\n")
 			Justify.Printer(str, filename, checkalign, align)
 			os.Exit(0)
 		} else {
@@ -73,7 +73,7 @@ func main() {
 		}
 
 	} else if len(os.Args[1:]) == 1 {
-		str := strings.ReplaceAll(strings.ReplaceAll(os.Args[2], "\\t", "    "), `\n`, "\n")
+		str := strings.ReplaceAll(strings.ReplaceAll(os.Args[1], "\\t", "    "), `\n`, "\n")
 		Justify.Printer(str, filename, checkalign, align)
 		os.Exit(0)
 	} else {
